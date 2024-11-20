@@ -1,7 +1,7 @@
 ![image](https://github.com/user-attachments/assets/7d0f2442-d8db-4cd2-9a2b-7bf471131b44)
 
 Pipelined MIPS Processor
-This project implements a pipelined MIPS processor written in VHDL, designed for integration on an FPGA. The architecture efficiently executes instructions with support for stalls and flushes to handle hazards and maintain correct program behavior.
+This project implements a pipelined MIPS processor written in VHDL, designed for integration on an Altera FPGA. The architecture efficiently executes instructions with support for stalls and flushes to handle hazards and maintain correct program behavior.
 The design follows a five-stage pipeline, with each stage handled by a distinct sub-entity:
 
 1. Ifetch (Instruction Fetch):
@@ -32,4 +32,4 @@ FPGA Integration: Designed for synthesis and deployment on FPGA hardware.
 Deliverables
 RTL Code: Fully implemented in VHDL.
 Documentation: Includes design overview, block diagrams, and operational details.
-Tested and verified on ModelSim and QuestaSim.
+Tested and verified on Quartus, ModelSim and QuestaSim. Integrated on Altera FPGA.
