@@ -1,0 +1,26 @@
+Mat2: .word 13, 14, 15, 16, 9, 10, 11, 12, 5, 6, 7, 8, 1, 2, 3, 4
+resMat: .word 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+
+.text
+
+
+addMats:
+    addi $t4, $zero, 0          # Initialize the row counter
+
+loop:
+    move $t6, $t4          # Calculate the index of the current element
+    sll $t6, $t6, 2             # Scale the index by 4 (word size)
+
+    lw $t7, Mat1($t6)           # Load element from Mat1
+    lw $t8, Mat2($t6)           # Load element from Mat2
+    add $t9, $t7, $t8           # Add the elements
+
+    sw $t9, resMat($t6)         # Store the result in resMat
+
+
+    addi $t4, $t4, 1            # Increment the row counter
+    slti $t6, $t4, 16           # Check if the row counter < M
+    bne $t6, $zero, loop
+    addi $zero, $zero, 0
+    jr $ra                      # Return
+

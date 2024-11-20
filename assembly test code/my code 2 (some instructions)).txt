@@ -1,0 +1,33 @@
+    .data
+result: .word 0        # Memory location to store the result
+
+    .text
+
+    addi $t0,$0, 16          # Load dividend value into $t0
+    addi $t1,$0, 2           # Load divisor value into $t1
+    addi $ra , $0,100
+
+    # Initialize variables
+    move $t2, $zero     # Quotient: $t2 = 0
+    move $t3, $t0       # Remainder: $t3 = $t0
+    addi $t7, $0,1
+
+loop:
+    bne $t3, $t1, subtract   # Branch to subtract if remainder != divisor
+    addi $zero,$zero,0
+    addi $t2, $t2, 1        # Increment quotient
+    j end                   # Jump to end
+
+subtract:
+    sub $t3, $t3, $t1       # Subtract divisor from remainder
+    addi $t2, $t2, 1        # Increment quotient
+    sub $t2 , $t2,$t7      #stall check
+    addi $t2,$t2,1
+    j loop                  # Jump to loop
+
+end:  
+    addi $zero,$zero,0
+    add $t3, $t3, $t1       # Add divisor to remainder
+
+    sw $t2, result          # Store the result in memory location 'result'
+    jr $ra                      # Return

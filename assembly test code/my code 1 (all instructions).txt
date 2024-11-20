@@ -1,0 +1,35 @@
+	addi $1 $1 222
+	add $2 $1 $1
+	sub $3 $2 $1
+	sll $4 $3 17
+	srl $5 $4 3
+	srl $6 $4 3
+	lui $7 111
+	move $8 $5
+	move $9 $7
+	xor $10 $7 $6
+	xori $11 $10 747
+	beq $5 $6 L
+L2:	sll $4 $4 11
+	slt $13 $10 $11
+	slti $14 $10 999
+	slti $15 $10 999
+	sw $1 0($0)
+	sw $2 4($0)
+	sw $3 8($0)
+	sw $4 12($0)
+	jal L3
+	j fin
+L:	sw $5 16($0)
+	j L2
+L3:	add $1 $2 $3
+	addi $1 $ra 0
+	jr $1
+	
+fin:	add $1 $2 $2
+	add $2 $3 $4
+	add $3 $5 $6
+	add $4 $7 $8
+	add $5 $1 $2
+	add $6 $3 $4
+	add $7 $5 $6
