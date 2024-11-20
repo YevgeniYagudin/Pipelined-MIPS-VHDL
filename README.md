@@ -1,4 +1,5 @@
 ![image](https://github.com/user-attachments/assets/7d0f2442-d8db-4cd2-9a2b-7bf471131b44)
+
 The design includes a pipelined MIPS architecture.
 
 Supported instructions are according to the assignment requirements.
