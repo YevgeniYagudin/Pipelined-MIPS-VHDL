@@ -1,19 +1,35 @@
 ![image](https://github.com/user-attachments/assets/7d0f2442-d8db-4cd2-9a2b-7bf471131b44)
 
-The design includes a pipelined MIPS architecture.
+Pipelined MIPS Processor
+This project implements a pipelined MIPS processor written in VHDL, designed for integration on an FPGA. The architecture efficiently executes instructions with support for stalls and flushes to handle hazards and maintain correct program behavior.
+The design follows a five-stage pipeline, with each stage handled by a distinct sub-entity:
 
-Supported instructions are according to the assignment requirements.
+1. Ifetch (Instruction Fetch):
+Reads program instructions and data from memory.
+Passes the instruction to the next pipeline stage.
 
-The architecture supports stalls and flushes.
+2. Idecode (Instruction Decode):
+Decodes the instruction fetched by Ifetch.
+Reads/writes data to/from registers as required by the instruction.
 
-The top entity includes 5 main sub entities:
+3. Control:
+Enables or disables control signals for all components based on the current instruction.
+Ensures correct operation and hazard handling.
 
-1.	Ifetch: Reads the program data, the instruction, and passes it to the next element.
+4. Execute:
+Performs mathematical or logical operations on data from Idecode registers.
+Outputs results for memory access or writes back to registers.
 
-2.	Idecode: Gets the instruction from Ifetch and reads/writes to registers.
+6. Dmemory (Data Memory):
+Handles load and store operations.
+Manages memory access as specified by the instruction.
 
-3.	Control: Gets the instruction from Ifetch and enables/disables control signals to all relevant components.
-
-4.	Execute: Gets the instruction from Idecode and applies mathematical operations on data given by Idecode registers.
-
-5.	Dmemory: Loads and stores data according to instruction.
+Features
+Pipelined Execution: Five-stage pipeline ensures efficient instruction throughput.
+Hazard Handling: Supports stalls and flushes for resolving data and control hazards.
+Supported Instructions: Implements the instructions specified by assignment requirements.
+FPGA Integration: Designed for synthesis and deployment on FPGA hardware.
+Deliverables
+RTL Code: Fully implemented in VHDL.
+Documentation: Includes design overview, block diagrams, and operational details.
+Tested and verified on ModelSim and QuestaSim.
