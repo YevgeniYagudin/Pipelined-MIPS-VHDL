@@ -12,17 +12,21 @@ Passes the instruction to the next pipeline stage.
 Decodes the instruction fetched by Ifetch.
 Reads/writes data to/from registers as required by the instruction.
 
-3. Control:
-Enables or disables control signals for all components based on the current instruction.
-Ensures correct operation and hazard handling.
-
-4. Execute:
+3. Execute:
 Performs mathematical or logical operations on data from Idecode registers.
 Outputs results for memory access or writes back to registers.
 
-6. Dmemory (Data Memory):
+4. Dmemory (Data Memory):
 Handles load and store operations.
 Manages memory access as specified by the instruction.
+
+5. Write Back:
+Stores the result of execute stage in memory.
+
+ 
+Control:
+Enables or disables control signals for all components based on the current instruction.
+Ensures correct operation and hazard handling.
 
 Features
 Pipelined Execution: Five-stage pipeline ensures efficient instruction throughput.
